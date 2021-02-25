@@ -1,0 +1,497 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css">
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+	<link rel="stylesheet" href="css/theme/theme.css">
+
+	<link rel="stylesheet" href="css/main.css">
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<div class="flex center">
+					<H1>
+						Houdini and Paint API
+					</H1>
+					<div class="row center">
+						<p class="highlight">
+							By <a href="https://twitter.com/jansariparth" target="_blank">@jansariparth</a>
+						</p>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-60">
+					<div class="row center">
+						<h2 class="highlight">
+							About me
+						</h2>
+					</div>
+					<div class="row center">
+						<p>
+							Freelancer, Organizer <a href="https://www.gdggandhinagar.org" target="_blank">@gdggandhinagar</a>
+						</p>
+					</div>
+					<div class="row center">
+						<p style="font-size: 1em"><strong style="font-size: 3em"> I'm</strong> a guy who's trying to grow up &
+							do mature stuff but ends up mostly gaming or
+							designing/coding.</p>
+					</div>
+					<div class="center">
+						<div class="row space-around size-60">
+							<div class='social-wrapper' style="padding: 50px">
+								<div>
+									GIT
+								</div>
+								<a href="https://github.com/parth181195" target="_blank">@parth181195</a>
+							</div>
+							<div class="social-wrapper" style="padding: 50px">
+								<div>
+									Twitter
+								</div>
+								<a href="https://twitter.com/jansariparth" target="_blank">@jansariparth</a>
+							</div>
+							<div class="social-wrapper" style="padding: 50px">
+								<div>
+									Mail
+								</div>
+								<a href="mailto:ParthJansari@outlook.com" target="_blank">ParthJansari@outlook.com</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-60 sparkles">
+					<h1 class="">
+						Let's see 2 cool things
+					</h1>
+					<a class='sparkles' target='_blank'
+						href="https://parth181195.github.io/Houdini-Paintworklet-Ripple-Eexample/index.html">some </a>
+					<a class='sparkles' target='_blank'
+						href="https://parth181195.github.io/houdin-paint-api-animation-example/">thing</a>
+				</div>
+			</section>
+			<section>
+				<div class="flex hasIframe center size-60">
+					<h1>
+						CSS<br>
+						variables
+					</h1>
+					<pre class="fragment" style="box-shadow: none">
+						<code  lang="css">
+--my-var: something;
+color: var(--my-var)
+						</code>
+					</pre>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-60">
+					<h1>
+						The Issue
+					</h1>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-60">
+					<h1>
+						Example 1
+					</h1>
+					<h3>
+						Gradinat
+					</h3>
+					<div class="center gradinat-ex">
+						<div class="row space-around size-80">
+							<div class="btn-1 btn-container">
+								<span>
+									Unregisterd
+								</span>
+								<button class="btn">
+									not so cool!!
+								</button>
+							</div>
+							<div class="btn-2 btn-container">
+								<span>
+									Registerd
+								</span>
+								<button class="btn registered">
+									Cool ;)
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-90">
+					<h1>how!What!!Why!!!</h1>
+					<div class="livecode  no-console">
+						<pre><code class="html" title="index.html">
+<button class="registered">
+	Chand Pe
+</button>
+<button>
+	Kali Chai and <strong>PARLE-G</strong>
+</button>
+<script>
+	if ('registerProperty' in CSS) {
+		CSS.registerProperty({
+			name: '--color-stop',
+			syntax: "<color>",
+			initialValue: '#000000',
+			inherits: false
+		});
+	}
+</script>
+						</code></pre>
+						<pre><code class="css" title="awesome.css"> 
+button {
+	display: block;
+	margin: 20px auto;
+	min-height: 50px;
+	padding: 10px 20px;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	color: #ffffff;
+	font-size: 1.2em;
+	transition: background 2s cubic-bezier(0.71, -0.71, 0, 2.36);
+	background: linear-gradient(-121deg, #6e7ff3 0%, #ae2cff 100%, #6e7ff3 100%); 
+}
+button:hover {
+	background: linear-gradient(-121deg, #f36ed6 0%, #ae2cff 100%, #6e7ff3 100%);
+}
+button.registered {
+	--color-stop: #6e7ff3;
+	transition: --color-stop 2s cubic-bezier(0.71, -0.71, 0, 2.36);
+	background: linear-gradient(-121deg, var(--color-stop) 0%, #ae2cff 100%, var(--color-stop) 100%); 
+}
+button.registered:hover {
+	--color-stop: #17ffcb; 
+}
+							</code></pre>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<div class="flex center size-60">
+					<div class="row center">
+						<h2 class="highlight">
+							The Browser
+						</h2>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-90">
+					<figure>
+						<img src="images/img-1.svg" alt="browser-flow">
+					</figure>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-90">
+					<div class="row center">
+						<h2 class="highlight">
+							Rendering Engine
+						</h2>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-90">
+					<figure>
+						<img src="images/img-2.svg" alt="browser-flow">
+					</figure>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-90">
+					<div class="row start">
+						<h1>What is Houdini?<br></h1>
+						<div class="fragment">
+							<p>The objective of the CSS-TAG Houdini Task Force (CSS Houdini) is to jointly develop
+								features that
+								explain the “magic” of Styling and Layout on the web.</p>
+							<a class="highlight" href="https://github.com/w3c/css-houdini-drafts/wiki">CSS Houdini wiki</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-80">
+					<figure>
+						<img src="images/magic.webp" alt="browser-flow">
+					</figure>
+				</div>
+			</section>
+
+			<section>
+				<div class="flex center size-80">
+					<div class="row center">
+						<h3>
+							Extend CSS via JS
+						</h3>
+						<p>
+							So you don't need to wait for decade for some fruit company browser, normal browsers or
+							<strong class="fragment">IE</strong> do /
+							implement something new.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<div class="flex center size-80">
+					<div class="row center">
+						<h1 style="font-size: 3em">Worklets<br></h1>
+						<p class="fragment">an extention for rendring engine</p>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-80">
+					<div class="row center">
+						<h1 style="font-size: 3em">Worklets != Workers<br></h1>
+						<p>Worklets and Workers are diffrent<br></p>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-80">
+					<div class="row center">
+						<h1 style="font-size: 3em">Event Loop<br></h1>
+						<!-- <p >Worklets and Workers are diffrent<br></br> -->
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-80">
+					<figure>
+						<img src="images/img-4.svg" alt="browser-flow">
+					</figure>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-80">
+					<figure>
+						<img src="images/img-5.svg" alt="browser-flow">
+					</figure>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-80">
+					<figure>
+						<img src="images/img-3.svg" alt="browser-flow">
+					</figure>
+				</div>
+			</section>
+
+			<section>
+				<div class="flex center size-80 ">
+					<h1 class="sparkles">Let's see some Magic</h1>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-90">
+					<h1>R ainbow</h1>
+					<div class="livecode">
+
+						<pre><code class="html" title="index.html">
+	<textarea class="registered">
+		Chand Pe
+	</textarea>
+	<script>
+			CSS.paintWorklet.addModule('rainbowtize.js');
+		</script>
+							</code></pre>
+
+						<pre><code class="css" title="awesome.css"> 
+	textarea {
+		display: block;
+		margin: 20px auto;
+		min-height: 50px;
+		padding: 10px 20px;
+		border: none;
+		color:  #000;
+		background-color: transparent ;
+		background-image: paint(rainbowtize) ;
+		outline: none;
+		border-radius: 10px;
+		--step: 4;
+		--seed: 20;
+		font-size: 1.2em;
+	}
+								</code></pre>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-80">
+					<div class="livecode">
+
+						<pre><code class="html" title="index.html">
+		<button class="registered">
+			Chand Pe
+		</button>
+		<script>
+				CSS.paintWorklet.addModule('underline.js');
+			</script>
+								</code></pre>
+
+						<pre><code class="css" title="awesome.css"> 
+		button {
+			display: block;
+			margin: 20px auto;
+			min-height: 50px;
+			padding: 10px 20px;
+			border: none;
+      --extra-underlineNumber: 5; /* default: 3 */
+      --extra-underlineColor: #8266ff; /* default: black */
+      --extra-underlineSpread: 15; /* default: 20 */
+      --extra-underlineWidth: 1; /* default: 2 */
+			color:  #000;
+			background-color: transparent ;
+			background: paint(extra-superUnderline) ;
+			outline: none;
+			border-radius: 10px;
+			--step: 4;
+			--seed: 20;
+			font-size: 1.2em;
+		}
+									</code></pre>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-80 ">
+					<h1 class="sparkles">Let's see some Magic case studies</h1>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-80">
+					<h1>
+						Reference
+					</h1>
+					<div class="row center">
+						<h3>Articles, Repos, Sites</h3>
+					</div>
+					<a href="https://googlechromelabs.github.io/houdini-samples/">Chrome labs houdini-samples</a>
+					<span>
+
+						<a href="https://developers.google.com/web/updates/2018/01/paintapi">Paint API</a>(by <a
+							href='https://twitter.com/DasSurma'>@DasSurma</a>)
+					</span>
+					<span>
+						<a href="https://developers.google.com/web/updates/2018/10/animation-worklet">Animation Worklet</a>(by <a
+							href='https://twitter.com/DasSurma'>@DasSurma</a>)
+					</span>
+					<a href="https://developers.google.com/web/updates/2018/03/cssom">CSS om</a>
+					<a href="https://css-houdini.rocks/">Cool Experiments</a>
+					<span>
+						<a href="https://parth181195.github.io/Houdini-Paintworklet-Ripple-Eexample/index.html">Material
+							Button</a>(<a href='https://twitter.com/jansariparth'>me!!</a>)
+					</span>
+					<span>
+						<a href="https://parth181195.github.io/Houdini-Paintworklet-Ripple-Eexample/index.html">Gdg logo</a> (<a
+							href='https://twitter.com/jansariparth'>me!!</a>)
+					</span>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-80">
+					<h1>
+						Reference
+					</h1>
+						<h3>Videos</h3>
+						<span>
+							<a href="https://www.youtube.com/watch?v=lK3OiJvwgSc">State of Houdini (Chrome Dev Summit 2018) </a>(by <a
+									href='https://twitter.com/DasSurma'>@DasSurma</a>)
+						</span>
+						<span>
+							<a href="https://www.youtube.com/watch?v=GhRE3rML9t4">CSS Houdini & The Future of Styling </a>by <a
+								href='https://twitter.com/una'>Una Kravets</a>
+						</span>
+						<span>
+							<a href="https://www.youtube.com/watch?v=1W79T2ibd5Y&t=515s">Design System Magic with CSS Houdini </a>by <a
+								href='https://twitter.com/snugug'>Samuel Richard</a>
+						</span>
+						<span>
+							<!-- hopefully me after some time -->
+						</span>
+				</div>
+			</section>
+			<section>
+				<div class="flex center size-80">
+					<h1>
+						Thanks
+					</h1>
+				</div>
+			</section>
+		</div>
+	</div>
+	<script src="js/reveal.js"></script>
+	<script>
+		CSS.paintWorklet.addModule('underline.js');
+		CSS.paintWorklet.addModule('sparkles.js');
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			width: "100%",
+			height: "100%",
+			backgroundTransition: 'slide',
+			margin: 0.05,
+			history: true,
+			dependencies: [{
+					src: 'plugin/markdown/marked.js'
+				},
+				{
+					src: 'plugin/markdown/markdown.js'
+				},
+				{
+					src: 'plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: 'plugin/zoom-js/zoom.js',
+					async: true
+				},
+
+				{
+					src: 'plugin/livecode/livecode.js',
+					async: true
+				},
+				{
+					src: 'plugin/highlight/highlight.js',
+					async: true
+				}
+			]
+		});
+	</script>
+</body>
+
+</html>
